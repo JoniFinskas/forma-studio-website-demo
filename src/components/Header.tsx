@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router'
 
 const links = [
@@ -8,65 +8,148 @@ const links = [
 ]
 
 export function Header() {
-  const menu = useRef<HTMLDialogElement>(null)
+  const [open, setOpen] = useState(false)
+  const [scrollHidden, setScrollHidden] = useState(false)
+  const header = useRef<HTMLElement>(null)
+  const toggle = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const element = header.current
+    if (!element) return
+    const measure = () => {
+      if (open) return
+      const top = parseFloat(getComputedStyle(element).top) || 0
+      // Reserve the actual closed header height when text size or viewport changes.
+      document.documentElement.style.setProperty(
+        '--header-clearance',
+        `${Math.ceil(element.getBoundingClientRect().height + top + 24)}px`,
+      )
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [open])
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 900px)')
+    const close = () => {
+      setOpen(false)
+      setScrollHidden(false)
+    }
+    media.addEventListener('change', close)
+    return () => media.removeEventListener('change', close)
+  }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const closeOutside = (event: PointerEvent) => {
+      if (event.target instanceof Node && !header.current?.contains(event.target)) setOpen(false)
+    }
+    document.addEventListener('pointerdown', closeOutside)
+    return () => document.removeEventListener('pointerdown', closeOutside)
+  }, [open])
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 899px)')
+    let last = Math.max(0, window.scrollY)
+    let distance = 0
+    const onScroll = () => {
+      const current = Math.max(0, window.scrollY)
+      const delta = current - last
+      last = current
+      if (
+        !media.matches ||
+        open ||
+        current < 100 ||
+        header.current?.contains(document.activeElement)
+      ) {
+        distance = 0
+        setScrollHidden(false)
+        return
+      }
+      distance = Math.sign(delta) === Math.sign(distance) ? distance + delta : delta
+      if (Math.abs(distance) > 14) {
+        setScrollHidden(distance > 0)
+        distance = 0
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [open])
+
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header">
-        <Link className="wordmark" to="/" aria-label="Forma Studio home">
-          forma
-          <span className="brand-dot" aria-hidden="true">
-            .
-          </span>
-        </Link>
-        <nav className="desktop-nav" aria-label="Main navigation">
-          {links.map((link) => (
-            <NavLink key={link.to} to={link.to}>
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
-        <Link className="header-action" to="/contact">
-          Start a project
-        </Link>
-        <button
-          className="menu-toggle"
-          aria-haspopup="dialog"
-          onClick={() => menu.current?.showModal()}
-        >
-          Menu <span aria-hidden="true">+</span>
-        </button>
-      </header>
-      <dialog
-        ref={menu}
-        className="mobile-menu"
-        aria-labelledby="menu-title"
-        onClick={(event) => {
-          if (event.target === event.currentTarget) menu.current?.close()
+      <header
+        ref={header}
+        className="header-shell"
+        data-scroll-hidden={scrollHidden && !open}
+        onFocusCapture={() => setScrollHidden(false)}
+        onBlur={(event) => {
+          if (
+            event.relatedTarget instanceof Node &&
+            !event.currentTarget.contains(event.relatedTarget)
+          )
+            setOpen(false)
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape' && open) {
+            setOpen(false)
+            toggle.current?.focus()
+          }
         }}
       >
-        <div className="menu-panel">
-          <div className="menu-top">
-            <span id="menu-title">Explore Forma</span>
-            <button autoFocus onClick={() => menu.current?.close()}>
-              Close <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <nav aria-label="Mobile navigation">
-            <Link to="/" onClick={() => menu.current?.close()}>
-              Home
-            </Link>
+        <div className="site-header">
+          <Link className="wordmark" translate="no" to="/" aria-label="Forma Studio home">
+            forma
+            <span className="brand-dot" aria-hidden="true">
+              .
+            </span>
+          </Link>
+          <nav className="desktop-nav" aria-label="Main navigation">
             {links.map((link) => (
-              <NavLink key={link.to} to={link.to} onClick={() => menu.current?.close()}>
+              <NavLink key={link.to} to={link.to}>
                 {link.label}
               </NavLink>
             ))}
           </nav>
-          <p>Architecture & interiors</p>
+          <NavLink className="header-action" to="/contact">
+            Start a project
+          </NavLink>
+          <button
+            ref={toggle}
+            type="button"
+            className="menu-toggle"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen(!open)}
+          >
+            <span className="menu-label">{open ? 'Close' : 'Menu'}</span>
+            <span className="menu-symbol" aria-hidden="true">
+              {open ? '×' : '☰'}
+            </span>
+          </button>
+          <nav
+            id="mobile-menu"
+            className="mobile-nav"
+            aria-label="Mobile navigation"
+            hidden={!open}
+          >
+            <NavLink to="/" end onClick={() => setOpen(false)}>
+              Home
+            </NavLink>
+            {links.map((link) => (
+              <NavLink key={link.to} to={link.to} onClick={() => setOpen(false)}>
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
         </div>
-      </dialog>
+      </header>
     </>
   )
 }

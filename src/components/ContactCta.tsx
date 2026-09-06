@@ -4,7 +4,6 @@ export function ContactCta() {
   return (
     <section className="contact-cta container section">
       <div>
-        <p className="eyebrow">A place to begin</p>
         <h2>
           Tell us what
           <br />

@@ -24,16 +24,12 @@ export function ProjectCard({
             name={project.photo}
             sizes={compact ? '(max-width: 700px) 100vw, 33vw' : '(max-width: 700px) 100vw, 55vw'}
           />
-          <span className="image-label">
-            View project <span aria-hidden="true">↗</span>
-          </span>
+          <span className="image-label">View project</span>
         </div>
         <div className="project-caption">
           <div>
-            <p className="eyebrow">
-              {project.category} / Concept {project.number}
-            </p>
             <Heading>{project.title}</Heading>
+            <p className="project-category">{project.category}</p>
           </div>
           <span className="project-year">{project.year}</span>
         </div>

@@ -3,7 +3,6 @@ import photos from '../data/photos.json'
 export function PhotoCredits() {
   return (
     <section className="container section credits-page">
-      <p className="eyebrow">Attribution</p>
       <h1 tabIndex={-1}>Photo credits.</h1>
       <p className="intro-copy">
         These photographs illustrate a fictional concept. The photographers and pictured properties

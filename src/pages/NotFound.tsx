@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 export function NotFound() {
   return (
     <section className="container not-found">
-      <p className="eyebrow">404</p>
       <h1 tabIndex={-1}>
+        <span className="error-code">404</span>
         This page is
         <br />
         off the plan.

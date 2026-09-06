@@ -57,7 +57,6 @@ export function Contact() {
   return (
     <section className="container contact-page">
       <div className="contact-copy">
-        <p className="eyebrow">Start a conversation</p>
         <h1 tabIndex={-1}>
           What are you
           <br />
@@ -67,7 +66,6 @@ export function Contact() {
           A place, a problem or a first idea. A few details are enough to start.
         </p>
         <div className="contact-aside">
-          <p className="eyebrow">A useful first brief</p>
           <p>
             Tell us what the space is for, where you are in the process and what you would like to
             change.
@@ -106,6 +104,7 @@ export function Contact() {
                   id="email"
                   name="email"
                   type="email"
+                  spellCheck={false}
                   autoComplete="email"
                   maxLength={254}
                   required
@@ -171,9 +170,8 @@ export function Contact() {
           </noscript>
         </form>
         <div className="inquiry-preview" hidden={!preview}>
-          <p className="eyebrow">Your inquiry preview</p>
           <h2 ref={heading} tabIndex={-1}>
-            A good starting point.
+            Your inquiry preview.
           </h2>
           {preview && (
             <>

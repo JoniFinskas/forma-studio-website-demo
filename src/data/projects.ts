@@ -1,7 +1,6 @@
 export const projects = [
   {
     slug: 'the-atrium',
-    number: '01',
     title: 'The atrium',
     category: 'Workspaces',
     photo: 'atrium',
@@ -18,7 +17,6 @@ export const projects = [
   },
   {
     slug: 'terrace-study',
-    number: '02',
     title: 'Terrace study',
     category: 'Housing',
     photo: 'terrace',
@@ -35,7 +33,6 @@ export const projects = [
   },
   {
     slug: 'common-ground',
-    number: '03',
     title: 'Common ground',
     category: 'Interiors',
     photo: 'common-room',

@@ -13,11 +13,8 @@ export function ProjectDetail() {
     <>
       <section className="container page-intro project-intro">
         <Link className="back-link" to="/work">
-          ← All projects
+          All projects
         </Link>
-        <p className="eyebrow">
-          {project.category} / Concept {project.number}
-        </p>
         <h1 tabIndex={-1}>{project.title}.</h1>
         <p className="intro-copy">{project.subtitle}</p>
       </section>
@@ -44,7 +41,6 @@ export function ProjectDetail() {
           </div>
         </dl>
         <div>
-          <p className="eyebrow">The idea</p>
           <h2>{project.subtitle}</h2>
           <p>{project.brief}</p>
           <p>{project.detail}</p>
@@ -55,10 +51,7 @@ export function ProjectDetail() {
         </div>
       </section>
       <section className="container next-project">
-        <p className="eyebrow">Next study</p>
-        <Link to={`/work/${next.slug}`}>
-          {next.title} <span aria-hidden="true">↗</span>
-        </Link>
+        <Link to={`/work/${next.slug}`}>{next.title}</Link>
       </section>
     </>
   )

@@ -7,7 +7,6 @@ export function Studio() {
   return (
     <>
       <section className="container page-intro">
-        <p className="eyebrow">The studio</p>
         <h1 tabIndex={-1}>
           Good spaces begin
           <br />
@@ -21,7 +20,6 @@ export function Studio() {
       <section className="container studio-about">
         <Photo name="common-room" priority sizes="(max-width: 700px) 100vw, 60vw" />
         <div>
-          <p className="eyebrow">Our point of view</p>
           <h2>
             Useful first.
             <br />
@@ -43,7 +41,6 @@ export function Studio() {
       <section className="container section services-section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">How we can help</p>
             <h2>
               From the building
               <br />
@@ -52,13 +49,12 @@ export function Studio() {
           </div>
         </div>
         <div className="service-list">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <article key={service.value}>
-              <span className="service-number">0{index + 1}</span>
               <h3>{service.label}</h3>
               <p>{service.description}</p>
               <Link className="text-link" to={`/contact?service=${service.value}`}>
-                Discuss {service.label.toLowerCase()} <span aria-hidden="true">↗</span>
+                Discuss {service.label.toLowerCase()}
               </Link>
             </article>
           ))}
@@ -66,7 +62,6 @@ export function Studio() {
       </section>
       <section className="process-band">
         <div className="container section">
-          <p className="eyebrow">The process</p>
           <h2>
             Clear steps.
             <br />
@@ -74,7 +69,6 @@ export function Studio() {
           </h2>
           <ol className="process-list">
             <li>
-              <span>01</span>
               <h3>Understand the brief</h3>
               <p>
                 A conversation about the place, the practical limits and what a good outcome means
@@ -82,7 +76,6 @@ export function Studio() {
               </p>
             </li>
             <li>
-              <span>02</span>
               <h3>Test the possibilities</h3>
               <p>
                 Layouts and early material ideas make the options tangible before detailed decisions
@@ -90,7 +83,6 @@ export function Studio() {
               </p>
             </li>
             <li>
-              <span>03</span>
               <h3>Resolve the details</h3>
               <p>
                 Drawings and specifications bring the design together, with regular reviews along

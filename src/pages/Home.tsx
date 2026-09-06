@@ -7,42 +7,38 @@ import { projects } from '../data/projects'
 export function Home() {
   return (
     <>
-      <section className="home-hero container">
-        <div className="hero-intro">
-          <div>
-            <p className="eyebrow">Independent architecture & interiors</p>
+      <section className="home-hero">
+        <Photo name="pavilion" className="hero-background" priority sizes="100vw" />
+        <div className="hero-shade" aria-hidden="true" />
+        <div className="container hero-content">
+          <div className="hero-copy">
             <h1 tabIndex={-1}>
-              Spaces that make
+              Architecture for
               <br />
-              room for life.
+              <span className="hero-emphasis">everyday life.</span>
             </h1>
+            <p>Buildings and interiors shaped around the people who use them.</p>
+            <div className="hero-actions">
+              <Link className="button primary" to="/work">
+                Explore the work
+              </Link>
+              <Link className="button hero-secondary" to="/contact">
+                Start a project
+              </Link>
+            </div>
           </div>
-          <div className="hero-summary">
-            <p>Thoughtful buildings and interiors, shaped around the people who use them.</p>
-            <Link className="text-link" to="/work">
-              Explore the work <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </div>
-        <div className="hero-image">
-          <Photo name="atrium" priority sizes="(max-width: 1280px) 94vw, 1200px" />
-        </div>
-        <div className="image-caption">
-          <span>The atrium / Workplace concept</span>
-          <span>Selected study, 2026</span>
         </div>
       </section>
       <section className="container section home-work">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">01 / Selected work</p>
             <h2>
               Different places.
               <br />A considered approach.
             </h2>
           </div>
           <Link className="text-link" to="/work">
-            View all projects <span aria-hidden="true">↗</span>
+            View all projects
           </Link>
         </div>
         <div className="project-grid">
@@ -54,7 +50,6 @@ export function Home() {
       <section className="studio-band">
         <div className="container studio-split section">
           <div className="studio-copy">
-            <p className="eyebrow">02 / The studio</p>
             <h2>
               A clear idea,
               <br />

@@ -11,7 +11,6 @@ export function Work() {
   return (
     <>
       <section className="container page-intro">
-        <p className="eyebrow">The portfolio</p>
         <h1 tabIndex={-1}>Selected work.</h1>
         <p className="intro-copy">
           Three concept studies exploring daylight, shared space and the edges between inside and
