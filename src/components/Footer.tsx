@@ -2,26 +2,51 @@ import { Link } from 'react-router'
 
 export function Footer() {
   return (
-    <footer className="site-footer container">
-      <div className="footer-main">
-        <Link className="wordmark" to="/">
-          forma.
-        </Link>
-        <p>
-          Architecture & interiors.
-          <br />
-          Spaces for the way we live.
-        </p>
-        <nav aria-label="Footer navigation">
-          <Link to="/work">Work</Link>
-          <Link to="/studio">Studio</Link>
-          <Link to="/contact">Contact</Link>
-        </nav>
-      </div>
-      <div className="footer-bottom">
-        <p>Fictional studio. Projects are concept studies; photography is illustrative.</p>
-        <Link to="/credits">Photo credits</Link>
-        <span>© 2026 Joni Finskas</span>
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-main">
+          <div className="footer-identity">
+            <Link className="footer-brand" to="/" translate="no" aria-label="Forma Studio home">
+              forma.
+            </Link>
+            <p>Architecture and interiors.</p>
+          </div>
+          <nav className="footer-links" aria-labelledby="footer-group-0">
+            <h2 id="footer-group-0">Projects</h2>
+            <ul>
+              <li>
+                <Link to="/work/the-atrium">The atrium</Link>
+              </li>
+              <li>
+                <Link to="/work/terrace-study">Terrace study</Link>
+              </li>
+              <li>
+                <Link to="/work/common-ground">Common ground</Link>
+              </li>
+              <li>
+                <Link to="/work">All work</Link>
+              </li>
+            </ul>
+          </nav>
+          <nav className="footer-links" aria-labelledby="footer-group-1">
+            <h2 id="footer-group-1">Studio</h2>
+            <ul>
+              <li>
+                <Link to="/studio">About the studio</Link>
+              </li>
+              <li>
+                <Link to="/contact">Start a project</Link>
+              </li>
+              <li>
+                <Link to="/credits">Photo credits</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div className="footer-bottom">
+          <p>Fictional studio. Projects are concept studies; photography is illustrative.</p>
+          <span>© 2026 Joni Finskas</span>
+        </div>
       </div>
     </footer>
   )

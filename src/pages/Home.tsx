@@ -15,7 +15,7 @@ export function Home() {
             <h1 tabIndex={-1}>
               Architecture for
               <br />
-              <span className="hero-emphasis">everyday life.</span>
+              everyday life.
             </h1>
             <p>Buildings and interiors shaped around the people who use them.</p>
             <div className="hero-actions">
