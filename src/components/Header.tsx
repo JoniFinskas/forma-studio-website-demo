@@ -1,3 +1,4 @@
+import { BrandLogo } from './BrandLogo'
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router'
 
@@ -113,10 +114,7 @@ export function Header() {
       >
         <div className="site-header">
           <Link className="wordmark" translate="no" to="/" aria-label="Forma Studio home">
-            forma
-            <span className="brand-dot" aria-hidden="true">
-              .
-            </span>
+            <BrandLogo />
           </Link>
           <nav className="desktop-nav" aria-label="Main navigation">
             <NavLink to="/" end>
@@ -141,9 +139,18 @@ export function Header() {
             onClick={() => setOpen(!open)}
           >
             <span className="menu-label">{open ? 'Close' : 'Menu'}</span>
-            <span className="menu-symbol" aria-hidden="true">
-              {open ? '×' : '☰'}
-            </span>
+            <svg
+              className="menu-symbol"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d={open ? 'M6 6l12 12M6 18 18 6' : 'M4 8h16M4 16h16'} />
+            </svg>
           </button>
           <nav
             id="mobile-menu"

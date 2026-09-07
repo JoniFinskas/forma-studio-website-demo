@@ -1,3 +1,4 @@
+import { BrandLogo } from './BrandLogo'
 import { Link } from 'react-router'
 
 export function Footer() {
@@ -7,7 +8,7 @@ export function Footer() {
         <div className="footer-main">
           <div className="footer-identity">
             <Link className="footer-brand" to="/" translate="no" aria-label="Forma Studio home">
-              forma.
+              <BrandLogo />
             </Link>
             <p>Architecture and interiors.</p>
           </div>
