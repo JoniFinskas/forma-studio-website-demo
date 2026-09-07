@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  scrollbar-gutter: stable;
   font-family: 'Inter', Arial, sans-serif;
   color: #292b27;
   background: #eeeae2;
@@ -963,10 +964,6 @@ h2:focus {
   box-shadow: inset 0 1px 0 #ffffff2b;
   justify-self: end;
 }
-.header-action[aria-current='page'] {
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
 .menu-toggle {
   display: none;
 }
@@ -1230,6 +1227,12 @@ h2:focus {
 }
 .choice-item[data-state='checked'][data-highlighted] {
   background: var(--choice-highlight);
+}
+/* Keep the page scrollbar visible while the select manages focus and wheel input. */
+body[data-scroll-locked]:has(.choice-menu) {
+  overflow: visible !important;
+  margin-right: 0 !important;
+  --removed-body-scroll-bar-size: 0px !important;
 }
 .choice-menu {
   transform-origin: var(--radix-select-content-transform-origin);

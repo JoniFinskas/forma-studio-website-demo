@@ -126,9 +126,9 @@ export function Header() {
               </NavLink>
             ))}
           </nav>
-          <NavLink className="header-action" to="/contact">
+          <Link className="header-action" to="/contact">
             Start a project
-          </NavLink>
+          </Link>
           <button
             ref={toggle}
             type="button"
