@@ -24,6 +24,8 @@ pnpm preview
 
 The build type-checks the source, renders every public route to HTML, and creates Brotli and gzip alternatives for text assets. The preview server serves those files with matching content types and returns a dedicated 404 page for unknown addresses.
 
+The shared stylesheet is embedded in the generated HTML to avoid a blocking request. Form code loads when needed, and home hero images use AVIF with WebP fallback.
+
 ## Structure
 
 - `src/pages` contains the home, portfolio, project, studio and inquiry views.

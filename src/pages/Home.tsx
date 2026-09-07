@@ -8,7 +8,7 @@ export function Home() {
   return (
     <>
       <section className="home-hero">
-        <Photo name="pavilion" className="hero-background" priority sizes="100vw" />
+        <Photo name="pavilion" className="hero-background" priority avif sizes="100vw" />
         <div className="hero-shade" aria-hidden="true" />
         <div className="container hero-content">
           <div className="hero-copy">

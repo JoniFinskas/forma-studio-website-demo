@@ -13,6 +13,7 @@ const textTypes = {
 const types = {
   ...textTypes,
   '.webp': 'image/webp',
+  '.avif': 'image/avif',
   '.woff2': 'font/woff2',
   '.ico': 'image/x-icon',
 }

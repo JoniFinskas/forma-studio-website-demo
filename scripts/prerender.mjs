@@ -25,13 +25,22 @@ try {
       return `<link rel="preload" href="/assets/${file}" as="font" type="font/woff2" crossorigin>`
     })
     .join('')
-  const shell = (await fs.readFile(path.join(dist, 'index.html'), 'utf8')).replace(
-    '</head>',
-    `${fontHints}</head>`,
-  )
+  const stylesheets = assets.filter((name) => name.endsWith('.css'))
+  if (stylesheets.length !== 1) throw new Error('Expected one shared stylesheet')
+  const css = await fs.readFile(path.join(dist, 'assets', stylesheets[0]), 'utf8')
+  // The small shared stylesheet fits in the HTML response and avoids a blocking round trip.
+  const shell = (await fs.readFile(path.join(dist, 'index.html'), 'utf8'))
+    .replace(/<link rel="stylesheet"[^>]*>/, () => `<style>${css}</style>`)
+    .replace('</head>', `${fontHints}</head>`)
   for (const route of routes) {
-    const { html, title, description } = render(route)
-    const page = shell
+    const { html, title, description } = await render(route)
+    const formChunk = assets.find((name) => name.startsWith('Contact-') && name.endsWith('.js'))
+    if (!formChunk) throw new Error('Missing deferred form bundle')
+    const routeShell =
+      route === '/contact'
+        ? shell.replace('</head>', `<link rel="modulepreload" href="/assets/${formChunk}"></head>`)
+        : shell
+    const page = routeShell
       .replace(/<title>.*?<\/title>/, `<title>${escape(title)}</title>`)
       .replace(
         'name="description" content=""',

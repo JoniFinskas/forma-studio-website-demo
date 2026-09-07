@@ -67,6 +67,6 @@
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
     "acquired": "2026-09-06",
-    "changes": "Resized and converted to WebP. Metadata removed. Cropped for display with CSS; original color retained."
+    "changes": "Resized and converted to WebP and AVIF. Metadata removed. Cropped for display with CSS; original color retained."
   }
 }
