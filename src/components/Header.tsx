@@ -58,6 +58,15 @@ export function Header() {
       const current = Math.max(0, window.scrollY)
       const delta = current - last
       last = current
+      if (media.matches && open && delta !== 0) {
+        if (document.activeElement?.closest('#mobile-menu')) {
+          toggle.current?.focus({ preventScroll: true })
+        }
+        setOpen(false)
+        setScrollHidden(false)
+        distance = 0
+        return
+      }
       if (
         !media.matches ||
         open ||
@@ -110,6 +119,9 @@ export function Header() {
             </span>
           </Link>
           <nav className="desktop-nav" aria-label="Main navigation">
+            <NavLink to="/" end>
+              Home
+            </NavLink>
             {links.map((link) => (
               <NavLink key={link.to} to={link.to}>
                 {link.label}
