@@ -78,11 +78,13 @@ export function Contact() {
       <div className="inquiry-panel">
         <form ref={form} onSubmit={submit} noValidate hidden={preview !== null}>
           <h2>Your project</h2>
-          <p className="form-intro">All text fields are required.</p>
+          <p className="form-intro">Fields marked * are required.</p>
           <fieldset disabled={!hydrated}>
             <div className="form-row">
               <div className="field">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">
+                  Name <span aria-hidden="true">*</span>
+                </label>
                 <input
                   id="name"
                   name="name"
@@ -99,7 +101,9 @@ export function Contact() {
                 )}
               </div>
               <div className="field">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">
+                  Email <span aria-hidden="true">*</span>
+                </label>
                 <input
                   id="email"
                   name="email"
@@ -138,7 +142,9 @@ export function Contact() {
               />
             </div>
             <div className="field">
-              <label htmlFor="message">A little about the project</label>
+              <label htmlFor="message">
+                A little about the project <span aria-hidden="true">*</span>
+              </label>
               <textarea
                 id="message"
                 name="message"

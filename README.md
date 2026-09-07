@@ -1,5 +1,7 @@
 # Forma Studio
 
+![Forma Studio desktop preview](docs/preview.jpg)
+
 A responsive architecture and interiors website with a filterable portfolio, individual project studies and a local inquiry preview. Forma Studio and its projects are fictional. Photography illustrates the concepts and does not represent work completed by a real practice.
 
 ## Run locally
