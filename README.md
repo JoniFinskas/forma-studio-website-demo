@@ -2,9 +2,23 @@
 
 ![Forma Studio desktop preview](docs/preview.jpg)
 
+## Overview
+
 A responsive architecture and interiors website with a filterable portfolio, individual project studies and a local inquiry preview. Forma Studio and its projects are fictional. Photography illustrates the concepts and does not represent work completed by a real practice.
 
 This repository is a portfolio showcase for viewing and evaluating the work. It is not an open-source project or a template offered for reuse.
+
+## Tech stack
+
+- **UI:** React 19 and TypeScript 5.9.
+- **Routing:** React Router 7.
+- **Styling:** Tailwind CSS 3 with custom CSS.
+- **Form controls:** Radix UI Select.
+- **Fonts:** Inter, self-hosted through Fontsource.
+- **Build:** Vite 7, static HTML prerendering, and Brotli/gzip compression.
+- **Tooling:** pnpm 11.19.0, ESLint 9 and Prettier 3; Node.js 22.12 or newer.
+
+The lockfile preserves exact dependency resolutions, with a seven-day release-age policy for new resolutions.
 
 ## Run locally
 
@@ -28,7 +42,7 @@ The build type-checks the source, renders every public route to HTML, and create
 
 The shared stylesheet is embedded in the generated HTML to avoid a blocking request. Form code loads when needed, and home hero images use AVIF with WebP fallback.
 
-## Structure
+## Project structure
 
 - `src/pages` contains the home, portfolio, project, studio and inquiry views.
 - `src/components` contains shared navigation, images and accessible selectors.
@@ -37,14 +51,14 @@ The shared stylesheet is embedded in the generated HTML to avoid a blocking requ
 - `scripts` contains the static rendering and compression pipeline.
 - `public/images` contains responsive WebP photographs and selected AVIF alternatives.
 
-The interface uses React 19, TypeScript, React Router, Vite 7, Tailwind 3 with custom CSS, and Radix Select. Inter is self-hosted through Fontsource. The lockfile preserves exact dependency resolutions; the package policy requires a seven-day release age for new resolutions.
-
 ## Interaction and privacy
 
 The project filters, mobile navigation, service links and inquiry validation work locally. The inquiry form never sends a request or writes to browser storage. It is disabled until its local submit handler is ready. Example inputs remain in memory until the route is left or the page reloads.
 
 No analytics, cookies, backend, email service or deployment integration is configured. The pages use `noindex, nofollow` while the site remains a fictional portfolio example.
 
-## Assets and rights
+## Copyright and asset credits
 
-See [ASSET_LICENSES.md](ASSET_LICENSES.md) for original photographs, licenses, transformations and font credits. The Photo credits page presents the image attribution in the interface. Copyright © 2026 Joni Finskas. All rights reserved for the original code, design, logos and copy, to the extent protected by law. [LICENSE.md](LICENSE.md) permits viewing and private evaluation, but does not grant permission to reuse, redistribute, sell or deploy the original work. Public repository visibility does not make it open source. Third-party assets and software dependencies retain their respective licenses.
+See [ASSET_LICENSES.md](ASSET_LICENSES.md) for original photographs, licenses, transformations and font credits. The Photo credits page presents the image attribution in the interface.
+
+Copyright © 2026 Joni Finskas. All rights reserved for the original code, design, logos and copy, to the extent protected by law. [LICENSE.md](LICENSE.md) permits viewing and private evaluation, but does not grant permission to reuse, redistribute, sell or deploy the original work. Public repository visibility does not make it open source. Third-party assets and software dependencies retain their respective licenses.

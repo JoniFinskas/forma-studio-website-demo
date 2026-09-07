@@ -1124,6 +1124,10 @@ h2:focus {
   width: 100%;
   max-width: 760px;
 }
+.home-hero h1,
+.home-hero .hero-copy > p {
+  text-shadow: 0 2px 10px #00000073;
+}
 .home-hero h1 {
   font-size: clamp(3rem, 2rem + 3.5vw, 5.5rem);
   line-height: 1.04;
