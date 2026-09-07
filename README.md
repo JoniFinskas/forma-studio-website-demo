@@ -4,6 +4,8 @@
 
 A responsive architecture and interiors website with a filterable portfolio, individual project studies and a local inquiry preview. Forma Studio and its projects are fictional. Photography illustrates the concepts and does not represent work completed by a real practice.
 
+This repository is a portfolio showcase for viewing and evaluating the work. It is not an open-source project or a template offered for reuse.
+
 ## Run locally
 
 Use Node.js 22.12 or newer and pnpm 11.19.0.
@@ -33,7 +35,7 @@ The shared stylesheet is embedded in the generated HTML to avoid a blocking requ
 - `src/data` holds the typed project collection and photo attribution records.
 - `src/lib` contains route metadata and hydration utilities.
 - `scripts` contains the static rendering and compression pipeline.
-- `public/images` contains responsive WebP photographs.
+- `public/images` contains responsive WebP photographs and selected AVIF alternatives.
 
 The interface uses React 19, TypeScript, React Router, Vite 7, Tailwind 3 with custom CSS, and Radix Select. Inter is self-hosted through Fontsource. The lockfile preserves exact dependency resolutions; the package policy requires a seven-day release age for new resolutions.
 
@@ -45,4 +47,4 @@ No analytics, cookies, backend, email service or deployment integration is confi
 
 ## Assets and rights
 
-See [ASSET_LICENSES.md](ASSET_LICENSES.md) for original photographs, licenses, transformations and font credits. The Photo credits page presents the image attribution in the interface. Original code and copy are reserved under [LICENSE.md](LICENSE.md); third-party assets retain their own terms.
+See [ASSET_LICENSES.md](ASSET_LICENSES.md) for original photographs, licenses, transformations and font credits. The Photo credits page presents the image attribution in the interface. Copyright © 2026 Joni Finskas. All rights reserved for the original code, design, logos and copy, to the extent protected by law. [LICENSE.md](LICENSE.md) permits viewing and private evaluation, but does not grant permission to reuse, redistribute, sell or deploy the original work. Public repository visibility does not make it open source. Third-party assets and software dependencies retain their respective licenses.
