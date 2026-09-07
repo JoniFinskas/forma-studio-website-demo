@@ -10,7 +10,6 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
-  const [scrollHidden, setScrollHidden] = useState(false)
   const header = useRef<HTMLElement>(null)
   const toggle = useRef<HTMLButtonElement>(null)
 
@@ -36,7 +35,6 @@ export function Header() {
     const media = window.matchMedia('(min-width: 900px)')
     const close = () => {
       setOpen(false)
-      setScrollHidden(false)
     }
     media.addEventListener('change', close)
     return () => media.removeEventListener('change', close)
@@ -52,37 +50,12 @@ export function Header() {
   }, [open])
 
   useEffect(() => {
-    const media = window.matchMedia('(max-width: 899px)')
-    let last = Math.max(0, window.scrollY)
-    let distance = 0
+    if (!open) return
     const onScroll = () => {
-      const current = Math.max(0, window.scrollY)
-      const delta = current - last
-      last = current
-      if (media.matches && open && delta !== 0) {
-        if (document.activeElement?.closest('#mobile-menu')) {
-          toggle.current?.focus({ preventScroll: true })
-        }
-        setOpen(false)
-        setScrollHidden(false)
-        distance = 0
-        return
+      if (document.activeElement?.closest('#mobile-menu')) {
+        toggle.current?.focus({ preventScroll: true })
       }
-      if (
-        !media.matches ||
-        open ||
-        current < 100 ||
-        header.current?.contains(document.activeElement)
-      ) {
-        distance = 0
-        setScrollHidden(false)
-        return
-      }
-      distance = Math.sign(delta) === Math.sign(distance) ? distance + delta : delta
-      if (Math.abs(distance) > 14) {
-        setScrollHidden(distance > 0)
-        distance = 0
-      }
+      setOpen(false)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -96,8 +69,6 @@ export function Header() {
       <header
         ref={header}
         className="header-shell"
-        data-scroll-hidden={scrollHidden && !open}
-        onFocusCapture={() => setScrollHidden(false)}
         onBlur={(event) => {
           if (
             event.relatedTarget instanceof Node &&

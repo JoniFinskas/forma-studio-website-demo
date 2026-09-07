@@ -881,10 +881,10 @@ h2:focus {
 }
 
 .header-shell {
-  position: fixed;
-  inset: max(22px, env(safe-area-inset-top)) 0 auto;
-  /* Match the body's scrollbar compensation while a select locks scrolling. */
-  right: var(--removed-body-scroll-bar-size, 0px);
+  position: absolute;
+  inset: 0 0 auto;
+  padding-top: env(safe-area-inset-top);
+  background: var(--nav-solid);
   z-index: 20;
   padding-inline: max(32px, env(safe-area-inset-left)) max(32px, env(safe-area-inset-right));
   color: #f8f6f0;
@@ -898,20 +898,10 @@ h2:focus {
   justify-content: space-between;
   gap: 16px;
   padding: 6px 12px;
-  border: 1px solid #dfe6ed33;
-  border-radius: 20px;
-  background: var(--nav-solid);
-  box-shadow:
-    inset 0 1px 0 #ffffff12,
-    0 18px 56px #00000029;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-}
-@supports (backdrop-filter: blur(1px)) {
-  .site-header {
-    background: var(--nav-glass);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-  }
 }
 .site-header .wordmark {
   display: inline-flex;
@@ -974,10 +964,6 @@ h2:focus {
   outline: 2px solid #f0d1a4;
   outline-offset: 2px;
 }
-.header-shell:focus-within {
-  transform: translateY(0);
-  transition: none;
-}
 @media (hover: hover) and (pointer: fine) {
   .desktop-nav a:hover {
     background: #ffffff0c;
@@ -992,7 +978,6 @@ h2:focus {
 }
 @media (max-width: 899px) {
   .header-shell {
-    top: max(16px, env(safe-area-inset-top));
     padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right));
   }
   .site-header {
@@ -1057,13 +1042,9 @@ h2:focus {
     text-decoration: underline;
     text-underline-offset: 5px;
   }
-  .header-shell[data-scroll-hidden='true']:not(:focus-within) {
-    transform: translateY(calc(-100% - 24px));
-  }
 }
 @media (max-width: 359px) {
   .header-shell {
-    top: max(8px, env(safe-area-inset-top));
     padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right));
   }
   .site-header {
@@ -1083,11 +1064,6 @@ h2:focus {
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
-  }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .header-shell:not(:focus-within) {
-    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
