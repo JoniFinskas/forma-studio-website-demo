@@ -881,7 +881,7 @@ h2:focus {
 }
 
 .header-shell {
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto;
   padding-top: env(safe-area-inset-top);
   background: var(--nav-solid);
