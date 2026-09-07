@@ -1001,7 +1001,7 @@ h2:focus {
   .site-header {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: minmax(50px, auto) minmax(0, 1fr);
+    grid-template-rows: minmax(52px, auto) minmax(0, 1fr);
     min-height: 62px;
     max-height: calc(100svh - 32px - env(safe-area-inset-top));
     padding: 5px 12px;
