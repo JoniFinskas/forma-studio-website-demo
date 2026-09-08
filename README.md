@@ -1,5 +1,7 @@
 # Forma Studio
 
+[View live demo](https://forma-studio-demo.pages.dev/)
+
 ![Forma Studio desktop preview](docs/preview.jpg)
 
 ## Overview
